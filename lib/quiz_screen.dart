@@ -121,10 +121,20 @@ class _QuizScreenState extends State<QuizScreen>
               color: Color(0xFF6C63FF).withOpacity(0.1),
               shape: BoxShape.circle
             ),
-            child: Icon(Icons.emoji_events,
+            child: Center(child: 
+            Text(
+                  "$score/${questions.length}",
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF6c63FF),
+                  ),
+                  textAlign: TextAlign.center,
+                  ),)
+            /*Icon(Icons.emoji_events,
             size: 60,
             color: Color(0xFF6C63FF),
-            ),
+            ),*/
           ),
           SizedBox(height: 20),
           Text(
@@ -136,33 +146,32 @@ class _QuizScreenState extends State<QuizScreen>
             ),
           ),
           SizedBox(height: 20),
-          Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
-            decoration: BoxDecoration(
-              color: Color(0xFF6C63FF).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  "Score:  $score/${questions.length}",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF6c63FF),
-                  ),
-                  ),
-              ],
-            )
-          ),
-          SizedBox(height: 20),
           ElevatedButton(
             
            style:  ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF6C63FF).withOpacity(0.1),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50),
+            )
+          ),
+            onPressed: (){
+            Navigator.of(context).popUntil((route) => route.isFirst);
+          }, child: Text(
+            "Go Back Home",
+            style: TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+              color: Colors.white
+            ),
+            )
+          ),
+          
+          SizedBox(height: 20),
+          ElevatedButton(  
+           style:  ElevatedButton.styleFrom(
             backgroundColor: Color(0xFF6C63FF),
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50),
             
             )
           ),
@@ -199,6 +208,10 @@ class _QuizScreenState extends State<QuizScreen>
 
     if(index == selectedAnswer && index != questions[currentQuestionIndex].correctAnswer){
       return Colors.redAccent;
+    }
+
+    if(index != selectedAnswer){
+      return Colors.grey;
     }
 
     return Colors.white;

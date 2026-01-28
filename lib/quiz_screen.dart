@@ -2,10 +2,14 @@ import 'dart:async';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:quiz_app/question_data.dart';
 import 'package:quiz_app/question_model.dart';
 
+
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  final String category;
+
+  const QuizScreen({super.key, required this.category});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -13,6 +17,8 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> 
     with SingleTickerProviderStateMixin {
+
+      late List<Question> questions;
       int currentQuestionIndex = 0;
       int score = 0;
       bool isAnswered = false;
@@ -29,41 +35,13 @@ class _QuizScreenState extends State<QuizScreen>
         Color(0xFF96e1d3)
       ];
 
-      final List<Question> questions = [
-        Question(
-          questionText: "What is Flutter",
-          options: [
-            "A mobile development framework",
-            "A programming language",
-            "A database",
-            "A design tool"
-          ],
-          correctAnswer: 0
-          ),
-          Question(
-          questionText: "Which company developed Flutter?",
-          options: [
-            "A mobile development framework",
-            "A programming language",
-            "A database",
-            "A design tool"
-          ],
-          correctAnswer: 1
-          ),
-          Question(
-          questionText: "What is Flutter",
-          options: [
-            "A mobile development framework",
-            "A programming language",
-            "A database",
-            "A design tool"
-          ],
-          correctAnswer: 2
-          ),
-      ];
+ 
   @override
   void initState() {
     super.initState();
+
+    questions = quizData[widget.category]!;
+
     _animationController = 
       AnimationController(duration: Duration(seconds: 30),vsync: this);
     _animation = Tween<double>(begin: 1, end: 0).animate(_animationController)

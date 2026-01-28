@@ -10,11 +10,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  Widget _buildCategoryCard(BuildContext context, String title, IconData icon,
-  Color color, String questions) {
+  Widget _buildCategoryCard(
+   { required BuildContext context, 
+    required String title, 
+    required IconData icon,
+    required Color color, 
+    required String questionsCount, 
+    required String categoryKey}) 
+    {
     return GestureDetector(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder:(context) => QuizScreen()),);
+        Navigator.push(context, MaterialPageRoute(builder:(_) => QuizScreen(category: categoryKey),
+        ),);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -54,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 5),
             Text(
-              questions,
+              questionsCount,
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey[600],
@@ -154,28 +161,36 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisSpacing: 15,
             children: [
               _buildCategoryCard(
-                context, "Flutter Basics", 
-                Icons.flutter_dash, 
-                Color(0xFFFF6B6B), 
-                "10 Questions"),
+                context: context,
+                title: "Flutter Basics", 
+                icon: Icons.flutter_dash, 
+                color: Color(0xFFFF6B6B), 
+                questionsCount: "10 Questions",
+                categoryKey:  "flutter"),
 
                 _buildCategoryCard(
-                context, "Dart Programming", 
-                Icons.code, 
-                Color(0xFF4ECDC4), 
-                "15 Questions"),
+                context: context, 
+                title: "Dart Programming", 
+                icon: Icons.code, 
+                color: Color(0xFF4ECDC4), 
+                questionsCount: "15 Questions",
+                categoryKey: "dart"),
 
                 _buildCategoryCard(
-                context, "UI Design", 
-                Icons.design_services, 
-                Color(0xFFFFBE0B), 
-                "20 Questions"),
+                context: context, 
+                title: "UI Design", 
+                icon: Icons.design_services, 
+                color: Color(0xFFFFBE0B), 
+                questionsCount: "20 Questions",
+                categoryKey: "ui"),
 
                 _buildCategoryCard(
-                context, "State Management", 
-                Icons.category, 
-                Color(0xFF95E3D3), 
-                "10 Questions"),
+                context: context, 
+                title: "State Management", 
+                icon: Icons.category, 
+                color: Color(0xFF95E3D3), 
+                questionsCount: "10 Questions",
+                categoryKey: "state"),
 
 
             ]

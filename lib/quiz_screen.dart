@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:quiz_app/question_model.dart';
 
 class QuizScreen extends StatefulWidget {
   const QuizScreen({super.key});
@@ -7,9 +11,278 @@ class QuizScreen extends StatefulWidget {
   State<QuizScreen> createState() => _QuizScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _QuizScreenState extends State<QuizScreen> 
+    with SingleTickerProviderStateMixin {
+      int currentQuestionIndex = 0;
+      int score = 0;
+      bool isAnswered = false;
+      int ? selectedAnswer;
+      int timeLeft = 30;
+      Timer ? timer;
+      late AnimationController _animationController;
+      late Animation<double> _animation;
+
+      final List<Color> optionColors = [
+        Color(0xFFFF6B6B),
+        Color(0xFF4ECDC4),
+        Color(0xFFFFBE0B),
+        Color(0xFF96e1d3)
+      ];
+
+      final List<Question> questions = [
+        Question(
+          questionText: "What is Flutter",
+          options: [
+            "A mobile development framework",
+            "A programming language",
+            "A database",
+            "A design tool"
+          ],
+          correctAnswer: 0
+          ),
+          Question(
+          questionText: "Which company developed Flutter?",
+          options: [
+            "A mobile development framework",
+            "A programming language",
+            "A database",
+            "A design tool"
+          ],
+          correctAnswer: 1
+          ),
+          Question(
+          questionText: "What is Flutter",
+          options: [
+            "A mobile development framework",
+            "A programming language",
+            "A database",
+            "A design tool"
+          ],
+          correctAnswer: 2
+          ),
+      ];
+  @override
+  void initState() {
+    super.initState();
+    _animationController = 
+      AnimationController(duration: Duration(seconds: 30),vsync: this);
+    _animation = Tween<double>(begin: 1, end: 0).animate(_animationController)
+    ..addListener((){
+      setState(() {});
+    });
+    startTimer();
+  }
+
+  void startTimer(){
+    timer?.cancel();
+    timeLeft = 30;
+    _animationController.reset();
+    _animationController.forward();
+    timer = Timer.periodic(Duration(seconds: 1), (timer){
+      if(timeLeft > 0){
+        setState(() {
+          timeLeft--;
+        });
+      } else {
+        timer.cancel();
+        if(!isAnswered) {
+          checkAnswer(-1);
+        }
+      }
+    });
+  }
+
+  void checkAnswer(int selectedIndex) {
+    timer?.cancel();
+    _animationController.stop();
+    setState(() {
+      isAnswered = true;
+      selectedAnswer = selectedIndex;
+
+      if(selectedIndex == questions[currentQuestionIndex].correctAnswer){
+        score++;
+      }
+    });
+
+    Future.delayed(Duration(seconds: 2), (){
+      nextQuestion();
+    },);
+  }
+
+  void nextQuestion(){
+    if(currentQuestionIndex < questions.length - 1){
+      setState(() {
+        currentQuestionIndex ++;
+        isAnswered = false;
+        selectedAnswer = null;
+      });
+      startTimer();
+    } else {
+      showResults();
+    }
+  }
+
+  void showResults() {
+    showDialog(context: context,
+    barrierDismissible: false, 
+    builder: (context) => Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      child: Container (
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20)
+        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 100,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Color(0xFF6C63FF).withOpacity(0.1),
+              shape: BoxShape.circle
+            ),
+            child: Icon(Icons.emoji_events,
+            size: 60,
+            color: Color(0xFF6C63FF),
+            ),
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Quiz Completed',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Color(0xFF2C3E50),
+            ),
+          ),
+          SizedBox(height: 20),
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 30),
+            decoration: BoxDecoration(
+              color: Color(0xFF6C63FF).withOpacity(0.1),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Score:  $score/${questions.length}",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF6c63FF),
+                  ),
+                  ),
+              ],
+            )
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            
+           style:  ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF6C63FF),
+            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10),
+            
+            )
+          ),
+            onPressed: (){
+            Navigator.pop(context);
+            setState(() {
+              currentQuestionIndex = 0;
+              score = 0;
+              isAnswered = false;
+              selectedAnswer = null;
+            });
+            startTimer();
+          }, child: Text(
+            "Play Again",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white
+            ),
+            )
+          )
+        ],
+      ),
+      )
+    ));
+  }
+
+  Color getButtonColor(int index){
+    if(!isAnswered) return Colors.white;
+
+    if(index == questions[currentQuestionIndex].correctAnswer){
+      return Colors.green.shade400;
+    }
+
+    if(index == selectedAnswer && index != questions[currentQuestionIndex].correctAnswer){
+      return Colors.redAccent;
+    }
+
+    return Colors.white;
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    _animationController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF6C63FF),
+              Color(0xFF3F3D9D)
+            ], 
+          ),
+        ),
+        child: SafeArea(child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.quiz,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          "${currentQuestionIndex + 1} / ${questions.length}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          )
+                        )
+                    ],),
+                  ),
+                ],
+              )
+            ),
+          ],)),
+      ),
+    );
   }
 }

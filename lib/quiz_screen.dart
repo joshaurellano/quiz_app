@@ -81,10 +81,6 @@ class _QuizScreenState extends State<QuizScreen>
         score++;
       }
     });
-
-    Future.delayed(Duration(seconds: 2), (){
-      nextQuestion();
-    },);
   }
 
   void nextQuestion(){
@@ -398,8 +394,32 @@ class _QuizScreenState extends State<QuizScreen>
                     )
                     ),
                     )),
-                  )
-                ],
+                  ),
+                  if(isAnswered)
+                    Padding(
+                      padding: EdgeInsets.only(top: 30),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF6C63FF),
+                          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                        ),
+                        onPressed: nextQuestion,
+                        child: Text(
+                          currentQuestionIndex == questions.length - 1
+                            ? "See Results"
+                            : "Next",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                ]
               )
             ))
           ],)),

@@ -293,8 +293,17 @@ class _QuizScreenState extends State<QuizScreen>
                           value: _animation.value,
                           backgroundColor: Colors.white24,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            timeLeft > 10 ? Colors.white : Color(0xFFFF6B6B)
+                            timeLeft > 10 ? Colors.white : Colors.redAccent
                           ),
+                          strokeWidth: 5,
+                        ),
+                      ),
+                      Text(
+                        timeLeft.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
                       )
                     ],
@@ -302,6 +311,48 @@ class _QuizScreenState extends State<QuizScreen>
                 ],
               )
             ),
+
+            Expanded(child: SingleChildScrollView(
+              padding: EdgeInsets.all(20),
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.all(25),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 20,
+                          offset: Offset(0, 10)
+                        )
+                      ]
+                    ),
+                    child: Column(
+                      children: [
+                        Icon(Icons.lightbulb_outline,
+                        color: Color(0xFF6C63FF),
+                        size: 40,
+                        ),
+                        SizedBox(height: 20),
+                        Text(questions[currentQuestionIndex].questionText,
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          height: 1.5,
+                          color: Color(0xFF2C3858),
+                        ),
+                        textAlign: TextAlign.center,
+                        ),
+                      ],
+                    )
+                  ),
+                ],
+              )
+            ))
           ],)),
       ),
     );

@@ -350,6 +350,64 @@ class _QuizScreenState extends State<QuizScreen>
                       ],
                     )
                   ),
+                  SizedBox(height: 30),
+                  Column(
+                    children: List.generate(questions[currentQuestionIndex].options.length, 
+                    (index) => Padding(padding: EdgeInsets.only(bottom: 15),
+                    child: AnimatedContainer(duration: Duration(milliseconds: 300),
+                    child: InkWell(
+                      onTap: isAnswered ? null : () => checkAnswer(index),
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: isAnswered ? getButtonColor(index) : Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: optionColors[index].withOpacity(0.3),
+                              blurRadius: 10,
+                              offset: Offset(0, 5),
+                            )
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                color: optionColors[index].withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: Text(String.fromCharCode(65 + index),
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: optionColors[index],
+                                ),
+                                ),
+                                ),
+                            ),
+                            SizedBox(width: 15),
+                            Expanded(
+                              child: Text(
+                                questions[currentQuestionIndex].options[index],
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: isAnswered && getButtonColor(index) 
+                                != Colors.white 
+                                  ? Colors.white 
+                                  : Color(0xFF2C3E50)),
+                              ),
+                              ),
+                            ]
+                        )
+                      )
+                    )
+                    ),
+                    )),
+                  )
                 ],
               )
             ))

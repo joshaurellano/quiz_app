@@ -276,8 +276,29 @@ class _QuizScreenState extends State<QuizScreen>
                             fontWeight: FontWeight.bold,
                           )
                         )
-                    ],),
+                    ],
+                    ),
                   ),
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        height: 60,
+                        width: 60,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.2),
+                          shape: BoxShape.circle,
+                        ),
+                        child: CircularProgressIndicator(
+                          value: _animation.value,
+                          backgroundColor: Colors.white24,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            timeLeft > 10 ? Colors.white : Color(0xFFFF6B6B)
+                          ),
+                        ),
+                      )
+                    ],
+                  )
                 ],
               )
             ),

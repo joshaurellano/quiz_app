@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        "Alex",
+                        "Hello Entrepreneur!",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16,
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.white.withOpacity(0.8)
             ),
           ),
-          Text("Challenge Yourself",
+          Text("Challenge Yourself?",
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
@@ -162,36 +162,35 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               _buildCategoryCard(
                 context: context,
-                title: "Flutter Basics", 
+                title: "Marketing & Branding", 
                 icon: Icons.flutter_dash, 
                 color: Color(0xFFFF6B6B), 
-                questionsCount: "10 Questions",
-                categoryKey:  "flutter"),
+                questionsCount: "5 Questions",
+                categoryKey:  "marketing"),
 
                 _buildCategoryCard(
                 context: context, 
-                title: "Dart Programming", 
+                title: "Finance & Economics", 
                 icon: Icons.code, 
                 color: Color(0xFF4ECDC4), 
-                questionsCount: "15 Questions",
-                categoryKey: "dart"),
+                questionsCount: "5 Questions",
+                categoryKey: "finance"),
 
                 _buildCategoryCard(
                 context: context, 
-                title: "UI Design", 
+                title: "Entrepreneurship \n& Startups", 
                 icon: Icons.design_services, 
                 color: Color(0xFFFFBE0B), 
-                questionsCount: "20 Questions",
-                categoryKey: "ui"),
+                questionsCount: "5 Questions",
+                categoryKey: "entrepreneurship"),
 
                 _buildCategoryCard(
                 context: context, 
-                title: "State Management", 
+                title: "Management \n& Strategy", 
                 icon: Icons.category, 
                 color: Color(0xFF95E3D3), 
-                questionsCount: "10 Questions",
-                categoryKey: "state"),
-
+                questionsCount: "5 Questions",
+                categoryKey: "management"),
 
             ]
             )

@@ -1,141 +1,207 @@
 import 'question_model.dart';
 
 Map<String, List<Question>> quizData = {
-  "flutter": [
+  "marketing": [
     Question(
-      questionText: "What is Flutter?",
+      questionText: "What do the \"4 Ps\" of the marketing mix stand for?",
       options: [
-        "A mobile framework",
-        "A database",
-        "A language",
-        "A game engine"
+        "People, Price, Power, Promotion",
+        "Product, Price, Place, Promotion",
+        "Product, Profit, Paper, Plan",
+        "Positioning, Price, Place, Performance"
       ],
-      correctAnswer: 0,
+      correctAnswer: 1,
     ),
     Question(
-      questionText: "What is Flutter?",
+      questionText: "What is \"B2B\" marketing",
       options: [
-        "A mobile framework",
-        "A database",
-        "A language",
-        "A game engine"
+        "Business-to-Buyer",
+        "Brand-to-Brand",
+        "Business-to-Business",
+        "Back-to-Business"
       ],
-      correctAnswer: 0,
+      correctAnswer: 2,
     ),
     Question(
-      questionText: "What is Flutter?",
+      questionText: "A \"SWOT\" analysis is used to evaluate a company's:",
       options: [
-        "A mobile framework",
-        "A database",
-        "A language",
-        "A game engine"
+        "Salary, Wages, Output, Taxes",
+        "Sales, Worldwide, Operations, Tools",
+        "Strengths, Weaknesses, Opportunities, Threats",
+        "Strategy, Work, Organization, Training"
       ],
-      correctAnswer: 0,
+      correctAnswer: 2,
     ),
     Question(
-      questionText: "What is Flutter?",
+      questionText: "The \"Value Proposition\" of a company describes:",
       options: [
-        "A mobile framework",
-        "A database",
-        "A language",
-        "A game engine"
+        "The total cost of production",
+        "The unique benefit a product provides to customers",
+        "The company's stock market value",
+        "The CEO's annual bonus"
       ],
-      correctAnswer: 0,
+      correctAnswer: 1,
     ),
     Question(
-      questionText: "What is Flutter?",
+      questionText: "Which term refers to the emotional and mental association a customer has with a company?",
       options: [
-        "A mobile framework",
-        "A database",
-        "A language",
-        "A game engine"
+        "Logo",
+        "Revenue",
+        "Brand Equity",
+        "Market Share"
       ],
-      correctAnswer: 0,
+      correctAnswer: 2,
     ),
   ],
   
 
-  "dart": [
+  "finance": [
     Question(
-      questionText: "Dart is developed by?",
-      options: ["Google", "Meta", "Apple", "Microsoft"],
+      questionText: "What does \"ROI\" stand for?",
+      options: [
+        "Risk of Investment", 
+        "Return on Investment", 
+        "Revenue on Income", 
+        "Rate of Inflation"
+        ],
+      correctAnswer: 1,
+    ),
+    Question(
+      questionText: "In the stock market, a \"Bear Market\" means prices are:",
+      options: [
+        "Rising", 
+        "Falling", 
+        "Staying the same", 
+        "Trading in gold only"
+        ],
       correctAnswer: 0,
     ),
     Question(
-      questionText: "Dart is developed by?",
-      options: ["Google", "Meta", "Apple", "Microsoft"],
-      correctAnswer: 0,
+      questionText: "What is \"Liquidity\" in business?",
+      options: [
+        "The amount of debt a company has", 
+        "The total physical assets like buildings", 
+        "How quickly an asset can be converted into cash", 
+        "The net profit after taxes"
+        ],
+      correctAnswer: 2,
     ),
     Question(
-      questionText: "Dart is developed by?",
-      options: ["Google", "Meta", "Apple", "Microsoft"],
-      correctAnswer: 0,
+      questionText: "\"Gross Profit\" is calculated by:",
+      options: [
+        "Total Revenue minus Taxes", 
+        "Total Revenue minus Cost of Goods Sold (COGS)", 
+        "Total Assets minus Liabilities", 
+        "Net Income plus Dividends"
+        ],
+      correctAnswer: 1,
     ),
     Question(
-      questionText: "Dart is developed by?",
-      options: ["Google", "Meta", "Apple", "Microsoft"],
-      correctAnswer: 0,
-    ),
-    Question(
-      questionText: "Dart is developed by?",
-      options: ["Google", "Meta", "Apple", "Microsoft"],
-      correctAnswer: 0,
-    ),
-  ],
-
-  "ui": [
-    Question(
-      questionText: "What widget is used for layout?",
-      options: ["Row", "HTTP", "Firebase", "API"],
-      correctAnswer: 0,
-    ),
-    Question(
-      questionText: "What widget is used for layout?",
-      options: ["Row", "HTTP", "Firebase", "API"],
-      correctAnswer: 0,
-    ),
-    Question(
-      questionText: "What widget is used for layout?",
-      options: ["Row", "HTTP", "Firebase", "API"],
-      correctAnswer: 0,
-    ),
-    Question(
-      questionText: "What widget is used for layout?",
-      options: ["Row", "HTTP", "Firebase", "API"],
-      correctAnswer: 0,
-    ),
-    Question(
-      questionText: "What widget is used for layout?",
-      options: ["Row", "HTTP", "Firebase", "API"],
-      correctAnswer: 0,
+      questionText: "A \"Unicorn\" in the business world is a private startup valued at over:",
+      options: [
+        "\$100 Million", 
+        "\$500 Million", 
+        "\$1 Billion", 
+        "\$10 Billion"
+        ],
+      correctAnswer: 2,
     ),
   ],
 
-  "state": [
+  "entrepreneurship": [
     Question(
-      questionText: "Which is a state management tool?",
-      options: ["Provider", "SQLite", "HTTP", "HTML"],
-      correctAnswer: 0,
+      questionText: "What does \"MVP\" stand for in startup development?",
+      options: [
+        "Most Valuable Product", 
+        "Minimum Viable Product", 
+        "Market Value Position", 
+        "Multiple Venture Partner"],
+      correctAnswer: 1,
     ),
     Question(
-      questionText: "Which is a state management tool?",
-      options: ["Provider", "SQLite", "HTTP", "HTML"],
-      correctAnswer: 0,
+      questionText: "What is \"Bootstrapping\"?",
+      options: [
+        "Raising money from Venture Capitalists", 
+        "Hiring a large team immediately", 
+        "Funding a company using only personal savings and initial revenue", 
+        "Selling the company to a competitor"],
+      correctAnswer: 2,
     ),
     Question(
-      questionText: "Which is a state management tool?",
-      options: ["Provider", "SQLite", "HTTP", "HTML"],
-      correctAnswer: 0,
+      questionText: "When a startup \"pivots,\" it means they are:",
+      options: [
+        "Closing the business", 
+        "Changing their core business strategy or product", 
+        "Going public on the stock exchange", 
+        "Firing the leadership team"],
+      correctAnswer: 1,
     ),
     Question(
-      questionText: "Which is a state management tool?",
-      options: ["Provider", "SQLite", "HTTP", "HTML"],
-      correctAnswer: 0,
+      questionText: "An \"Angel Investor\" is typically someone who:",
+      options: [
+        "Works for the government", 
+        "Invests their own money into a small startup for equity", 
+        "Manages a large bank", 
+        "Provides free legal advice"
+        ],
+      correctAnswer: 2,
     ),
     Question(
-      questionText: "Which is a state management tool?",
-      options: ["Provider", "SQLite", "HTTP", "HTML"],
-      correctAnswer: 0,
+      questionText: "The term \"Burn Rate\" refers to:",
+      options: [
+        "How fast a product sells", 
+        "How fast a company spends its capital before turning a profit", 
+        "The rate of employee turnover", 
+        "The physical destruction of old inventory"],
+      correctAnswer: 2,
+    ),
+  ],
+
+  "management": [
+    Question(
+      questionText: "Who is responsible for the day-to-day operations of a company?",
+      options: [
+      "CEO (Chief Executive Officer)", 
+      "COO (Chief Operating Officer)", 
+      "CFO (Chief Financial Officer)", 
+      "CTO (Chief Technology Officer)"],
+      correctAnswer: 1,
+    ),
+    Question(
+      questionText: "\"Outsourcing\" is the practice of:",
+      options: [
+        "Hiring more internal staff", 
+        "Contracting a business process to an outside supplier", 
+        "Moving the headquarters to a different city", 
+        "Selling products in foreign markets"],
+      correctAnswer: 1,
+    ),
+    Question(
+      questionText: "Which framework is used to analyze the competitive environment of an industry?",
+      options: [
+        "The 12 Principles", 
+        "Porter’s Five Forces", 
+        "The Golden Circle", 
+        "Six Sigma"],
+      correctAnswer: 1,
+    ),
+    Question(
+      questionText: "A \"Merger\" occurs when:",
+      options: [
+        "One company buys another and shuts it down", 
+        "Two companies combine to form a single new entity", 
+        "A company files for bankruptcy", 
+        "A company splits into two smaller ones"],
+      correctAnswer: 1,
+    ),
+    Question(
+      questionText: "\"Corporate Culture\" refers to:",
+      options: [
+        "The dress code of the office", 
+        "The legal bylaws of a corporation", 
+        "The shared values, beliefs, and behaviors of employees", 
+        "The location of the company's offices"],
+      correctAnswer: 2,
     ),
   ],
 };

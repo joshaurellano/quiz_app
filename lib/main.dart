@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quiz_app/home_screen.dart';
 
 void main() {
@@ -13,7 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF6C63FF)
+        scaffoldBackgroundColor: const Color(0xFF6C63FF),
+        textTheme: GoogleFonts.googleSansTextTheme(Theme.of(context).textTheme,)
       ),
       home: HomeScreen(),
     );

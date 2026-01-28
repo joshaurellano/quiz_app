@@ -207,7 +207,7 @@ class _QuizScreenState extends State<QuizScreen>
     }
 
     if(index != selectedAnswer){
-      return Colors.grey;
+      return Colors.grey.shade400;
     }
 
     return Colors.white;

@@ -136,6 +136,13 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is available for personal and educational use.
 
+## Personalized Question
+Business/service name: Naga City Peoples Mall
+
+City/: Naga City
+
+What problem the app solves: The quiz app aims to promote NCPM. It also enlighten users that NCPM is able to create significant change that would contribute to efficiency competetiveness of NCPM. 
+
 👨‍💻 Author
 Josh Aurellano
 

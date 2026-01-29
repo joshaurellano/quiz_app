@@ -1,54 +1,54 @@
 import 'question_model.dart';
 
 Map<String, List<Question>> quizData = {
-  "marketing": [
+  "ncpm": [
     Question(
-      questionText: "What do the \"4 Ps\" of the marketing mix stand for?",
+      questionText: "What does NCPM mean?",
       options: [
-        "People, Price, Power, Promotion",
-        "Product, Price, Place, Promotion",
-        "Product, Profit, Paper, Plan",
-        "Positioning, Price, Place, Performance"
+        "Naga Chamber of Products and Marketing",
+        "Naga City Peoples Mall",
+        "Naga City Profitability Market",
+        "Naga Courier and Processing Merchandise"
       ],
       correctAnswer: 1,
     ),
     Question(
-      questionText: "What is \"B2B\" marketing",
+      questionText: "Where is NCPM located?",
       options: [
-        "Business-to-Buyer",
-        "Brand-to-Brand",
-        "Business-to-Business",
-        "Back-to-Business"
+        "Ocampo",
+        "Calabanga",
+        "Naga City",
+        "Pili"
       ],
       correctAnswer: 2,
     ),
     Question(
-      questionText: "A \"SWOT\" analysis is used to evaluate a company's:",
+      questionText: "What products/services can you find inside NCPM?",
       options: [
-        "Salary, Wages, Output, Taxes",
-        "Sales, Worldwide, Operations, Tools",
-        "Strengths, Weaknesses, Opportunities, Threats",
-        "Strategy, Work, Organization, Training"
+        "Appliances",
+        "Electronics",
+        "Wet Goods",
+        "Clinic"
       ],
       correctAnswer: 2,
     ),
     Question(
-      questionText: "The \"Value Proposition\" of a company describes:",
+      questionText: "What improvement do you think NCPM would benefit?",
       options: [
-        "The total cost of production",
-        "The unique benefit a product provides to customers",
-        "The company's stock market value",
-        "The CEO's annual bonus"
+        "Price standardication",
+        "Enhanced cleanliness and waste management",
+        "Exclusive membership",
+        "Self checkout"
       ],
       correctAnswer: 1,
     ),
     Question(
-      questionText: "Which term refers to the emotional and mental association a customer has with a company?",
+      questionText: "What process do you think stallholders could help improve business process?",
       options: [
-        "Logo",
-        "Revenue",
-        "Brand Equity",
-        "Market Share"
+        "Logo making",
+        "Digital inventory",
+        "Digital payment option",
+        "Barcode"
       ],
       correctAnswer: 2,
     ),

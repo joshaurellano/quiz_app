@@ -162,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               _buildCategoryCard(
                 context: context,
-                title: "Marketing & Branding", 
+                title: "Marketing \n& Branding", 
                 icon: Icons.flutter_dash, 
                 color: Color(0xFFFF6B6B), 
                 questionsCount: "5 Questions",
@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 _buildCategoryCard(
                 context: context, 
-                title: "Finance & Economics", 
+                title: "Finance \n& Economics", 
                 icon: Icons.code, 
                 color: Color(0xFF4ECDC4), 
                 questionsCount: "5 Questions",
